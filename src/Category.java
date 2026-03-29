@@ -14,8 +14,11 @@ public class Category {
 
     // 기능
     // 카테고리 이름 반환
-
     public String getCategoryName() {
         return categoryName;
+    }
+    // 상품 목록 반환
+    public List<Product> getProductList() {
+        return productList;
     }
 }

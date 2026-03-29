@@ -56,5 +56,19 @@ public class Main {
 
         // 식품 카테고리 객체 생성 (진열대에 식품코너 라고 붙이고 식품을 진열함)
         Category foodCategory = new Category("식품", foodProductList);
+
+        // 생성한 카테고리 객체들을 담을 리스트 생성
+        List<Category> categoryList = new ArrayList<>();
+
+        // 카테고리를 카테고리 리스트에 담기
+        categoryList.add(electronicsCategory);
+        categoryList.add(clothesCategory);
+        categoryList.add(foodCategory);
+
+        // CommerceSystem 객체 생성
+        CommerceSystem commerceSystem = new CommerceSystem(categoryList);
+
+        // 커머스 플랫폼 실행
+        commerceSystem.start();
     }
 }
