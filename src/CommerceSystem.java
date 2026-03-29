@@ -4,14 +4,16 @@ import java.util.Scanner;
 public class CommerceSystem {
 
     // 속성
-    List<Category> categoryList; // 카테고리 목록
+    private List<Category> categoryList; // 카테고리 목록
+    private Cart cart; // 장바구니
 
     // 입력받기 위한 Scanner 객체 생성 (달릴 때만 입이 생기는 고양이는 되면 안 됨...)
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     // 생성자
-    public CommerceSystem(List<Category> categoryList) {
+    public CommerceSystem(List<Category> categoryList, Cart cart) {
         this.categoryList = categoryList;
+        this.cart = cart;
     }
 
     // 기능
@@ -78,12 +80,35 @@ public class CommerceSystem {
                     }
 
                     // 상품 번호를 입력한 경우
-                    if (productChoice >= 1 && productChoice <= selectedCategory.getProductList().size()) {
+                    else if (productChoice >= 1 && productChoice <= selectedCategory.getProductList().size()) {
                         // 선택한 상품 객체를 가져옴
                         Product selectedProduct = selectedCategory.getProductList().get(productChoice - 1);
                         System.out.println(selectedProduct.getProductName() + " | " + String.format("%,d", selectedProduct.getProductPrice()) + "원 | " + selectedProduct.getProductDescription() + " | 재고: " + selectedProduct.getProductStock() + "개");
                         System.out.println(); // 줄바꿈
-                        break;
+
+                        // 장바구니에 담을지 확인
+                        System.out.println("장바구니에 추가하시겠습니가?");
+                        System.out.println("1. 확인   2. 취소");
+                        System.out.print("메뉴 입력: ");
+                        int cartChoice = scanner.nextInt();
+                        System.out.println(); // 줄바꿈
+
+                        // 1 입력 시 추가
+                        if (cartChoice == 1) {
+                            CartItem cartItem = new CartItem(selectedProduct, 1);
+                            cart.addCartItem(cartItem);
+                            System.out.println("장바구니에 상품이 추가되었습니다.");
+                            System.out.println(); // 줄바꿈
+                        }
+                        // 2 입력 시 취소
+                        else if (cartChoice == 2) {
+                            System.out.println("장바구니 추가를 취소했습니다.");
+                            System.out.println(); // 줄바꿈
+                        }
+                        else {
+                            System.out.println("잘못된 번호입니다.");
+                            System.out.println(); // 줄바꿈
+                        }
                     }
                     else {
                         System.out.println("잘못된 상품 번호입니다.");
