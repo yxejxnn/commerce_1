@@ -29,4 +29,8 @@ public class Cart {
         }
         return cartTotalPrice; // 계산된 총 금액 반환
     }
+    // 주문 완료 또는 주문 취소 시 장바구니 비우는 메서드
+    public void clearCart() {
+        cartItemList.clear();
+    }
 }

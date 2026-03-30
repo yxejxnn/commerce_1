@@ -137,16 +137,41 @@ public class CommerceSystem {
                     // CartItem 안에 들어있는 상품 객체를 가져옴
                     Product cartProduct = cartItem.getCartProduct();
                     System.out.println(cartProduct.getProductName() + " | " + String.format("%,d" , cartProduct.getProductPrice()) + "원 | " + cartProduct.getProductDescription() + " | 수량: " + cartItem.getCartQuantity() + "개");
-                    System.out.println(); // 줄바꿈
                 }
+                System.out.println(); // 줄바꿈
+
                 // 총 주문 금액 출력
                 System.out.println("[ 총 주문 금액 ]");
                 System.out.println(String.format("%,d" , cart.calculateTotalPrice()) + "원");
                 System.out.println(); // 줄바꿈
+
+                // 주문 확정 또는 메인으로 돌아가기 메뉴 출력
+                System.out.println("1. 주문 확정   2. 메인으로 돌아가기");
+                System.out.println(); // 줄바꿈
+                System.out.print("메뉴 입력: ");
+                int orderChoice = scanner.nextInt();
+                System.out.println(); // 출바꿈
+
+                // 1 입력 시 주문 확정
+                if (orderChoice == 1) {
+                    System.out.println("주문이 완료되었습니다! ");
+                    System.out.println("총 금액: " + String.format("%,d" , cart.calculateTotalPrice()) + "원");
+                    System.out.println(); // 줄바꿈
+                    cart.clearCart(); // 주문이 끝났으므로 장바구니 비우기
+                }
+                // 2 입력 시 메인으로 돌아가기
+                else if (orderChoice == 2) {
+                    continue;
+                }
+                else {
+                    System.out.println("잘못된 번호입니다.");
+                }
             }
             // 5 입력 시 주문 취소
             else if (categoryChoice == 5 && !cart.getCartItemList().isEmpty()) {
-                System.out.println("진행 중인 주문을 취소합니다.");
+                cart.clearCart();
+                System.out.println("진행 중인 주문이 취소되었습니다.");
+                System.out.println(); // 줄바꿈
             }
             else{
                 System.out.println("잘못된 카테고리 번호입니다.");
