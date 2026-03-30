@@ -31,6 +31,18 @@ public class Product {
     public int getProductStock() {
         return productStock;
     }
+    // 상품 목록 출력 시 상품 정보 반환 메서드
+    public String getProductInfo() {
+        return productName + " | " + String.format("$,d" , productPrice) + "원 | " + productDescription;
+    }
+    // 상품 상세 조회 시 상품 상세 정보 반환 메서드
+    public String getProductDetailInfo() {
+        return productName + " | " + String.format("$,d" , productPrice) + "원 | " + productDescription + " | 재고: " + productStock + "개";
+    }
+    // 장바구니에 추가 시 현재 상품 재고가 1개 이상 있는지 확인하는 메서드
+    public boolean hasEnoughStock() {
+        return productStock > 0;
+    }
     // 주문 확정 시 주문한 수량만큼 상품 재고를 차감하는 메서드
     public void reduceProductStock(int orderQuantity) {
         productStock -= orderQuantity;

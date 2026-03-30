@@ -15,9 +15,15 @@ public class CartItem {
     public Product getCartProduct() {
         return cartProduct;
     }
-
     // 장바구니에 담긴 상품 수량 반환
     public int getCartQuantity() {
         return cartQuantity;
+    }
+    // 장바구니에 담긴 상품 목록 반환
+    public String getCartItemInfo() {
+        return cartProduct.getProductName() + " | "
+                + String.format("%,d" , cartProduct.getProductPrice()) + "원 | "
+                + cartProduct.getProductDetailInfo() + " | 수량: "
+                + cartQuantity + "개";
     }
 }

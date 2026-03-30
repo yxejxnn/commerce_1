@@ -21,4 +21,16 @@ public class Category {
     public List<Product> getProductList() {
         return productList;
     }
+    // 카테고리에 속한 상품 개수 반환
+    public int getProductCount() {
+        return productList.size();
+    }
+    // 카테고리 상품 목록 반환
+    public void showProductList() {
+        int productNumber = 1;
+        for (Product product : productList) {
+            System.out.println(productNumber + ". " + product.getProductInfo());
+            productNumber++;
+        }
+    }
 }
