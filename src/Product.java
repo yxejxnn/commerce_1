@@ -27,6 +27,16 @@ public class Product {
     public int getProductStock() {
         return productStock;
     }
+    // 재고 있는지 확인
+    public boolean hasStock() {
+        return productStock > 0;
+    }
+    // 재고 1개 차감
+    public void decreaseStock() {
+        if (!hasStock()) {
+            productStock--;
+        }
+    }
     // 상품 목록 출력 정보 반환
     public String getProductInfo() {
         return productName + " | " + String.format("%,d" , productPrice) + "원 | " + productDescription;
@@ -34,15 +44,5 @@ public class Product {
     // 상품 상세 정보 반환
     public String getProductDetailInfo() {
         return productName + " | " + String.format("%,d" , productPrice) + "원 | " + productDescription + " | 재고: " + productStock + "개";
-    }
-    // 재고 확인 및 차감 처리
-    public boolean updateStock(boolean reduceStock) {
-        if (productStock <= 0) {
-            return false;
-        }
-        if (reduceStock) {
-            productStock--;
-        }
-        return true;
     }
 }
