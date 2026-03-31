@@ -26,26 +26,23 @@ public class Cart {
         System.out.println();
     }
     // 장바구니 추가 처리
-    public boolean addProduct(Product selectedProduct, int cartChoice) {
+    public void addProduct(Product selectedProduct, int cartChoice) {
         if (cartChoice == 1) {
             if (selectedProduct.updateStock(false)) {
                 cartProductList.add(selectedProduct);
                 System.out.println(selectedProduct.getProductName() + "가 장바구니에 추가되었습니다.");
                 System.out.println();
-                return true;
+            } else {
+                System.out.println("재고가 부족하여 장바구니에 추가할 수 없습니다.");
+                System.out.println();
             }
-            System.out.println("재고가 부족하여 장바구니에 추가할 수 없습니다.");
-            System.out.println();
-            return false;
-        }
-        if (cartChoice == 2) {
+        } else if (cartChoice == 2) {
             System.out.println("장바구니 추가를 취소했습니다.");
             System.out.println();
-            return false;
+        } else {
+            System.out.println("잘못된 번호입니다.");
+            System.out.println();
         }
-        System.out.println("잘못된 번호입니다.");
-        System.out.println();
-        return false;
     }
     // 총 주문 금액 반환
     public int getTotalPrice() {
