@@ -187,33 +187,35 @@ public class CommerceSystem {
     }
     // 관리자 목록 출력 + 입력 + 관리자 모드 선택
     private void adminMenu() {
-        // 관리자 목록 출력
-        System.out.println("[ 관리자 모드 ]");
-        System.out.println("1. 상품 추가");
-        System.out.println("2. 상품 수정");
-        System.out.println("3. 상품 삭제");
-        System.out.println("4. 전체 상품 현황");
-        System.out.println("0. 메인으로 돌아가기");
-        System.out.println();
-        // 관리자 메뉴 입력
-        System.out.print("메뉴 입력: ");
-        int adminChoice = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println();
-        // 관리자 선택
-        if (adminChoice == 1) {
-            admin.addAdminProduct();
-        } else if (adminChoice == 2) {
-            admin.editAdminProduct();
-        } else if (adminChoice == 3) {
-            admin.deleteAdminProduct();
-        } else if (adminChoice == 4) {
-            admin.showAllProduct();
-        } else if (adminChoice == 0) {
-            return;
-        } else {
-            System.out.println("잘못된 번호입니다.");
+        while (true) {
+            // 관리자 목록 출력
+            System.out.println("[ 관리자 모드 ]");
+            System.out.println("1. 상품 추가");
+            System.out.println("2. 상품 수정");
+            System.out.println("3. 상품 삭제");
+            System.out.println("4. 전체 상품 현황");
+            System.out.println("0. 메인으로 돌아가기");
             System.out.println();
+            // 관리자 메뉴 입력
+            System.out.print("메뉴 입력: ");
+            int adminChoice = scanner.nextInt();
+            scanner.nextLine();
+            System.out.println();
+            // 관리자 선택
+            if (adminChoice == 1) {
+                admin.addAdminProduct();
+            } else if (adminChoice == 2) {
+                admin.editAdminProduct();
+            } else if (adminChoice == 3) {
+                admin.deleteAdminProduct();
+            } else if (adminChoice == 4) {
+                admin.showAllProduct();
+            } else if (adminChoice == 0) {
+                return;
+            } else {
+                System.out.println("잘못된 번호입니다.");
+                System.out.println();
+            }
         }
     }
 }

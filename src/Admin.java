@@ -179,6 +179,7 @@ public class Admin {
         } catch (Exception e) {
             System.out.println("잘못된 입력입니다.");
             System.out.println();
+            scanner.nextLine();
         }
     }
     // 상품 설명 수정 기능
@@ -238,7 +239,7 @@ public class Admin {
 
             for (Category category : categoryList) {
                 for (Product product : category.getCategoryProductList()) {
-                    if (product.equals(targetProductName)) {
+                    if (product.getProductName().equals(targetProductName)) {
                         selectedCategory = category;
                         selectedProduct = product;
                         break;
