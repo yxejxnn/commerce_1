@@ -208,8 +208,7 @@ public class CommerceSystem {
         } else if (adminChoice == 3) {
             admin.deleteAdminProduct();
         } else if (adminChoice == 4) {
-            System.out.println("[ 전체 상품 현황 ]");
-            System.out.println();
+            admin.showAllProduct();
         } else if (adminChoice == 0) {
             return;
         } else {

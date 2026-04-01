@@ -280,4 +280,18 @@ public class Admin {
             scanner.nextLine();
         }
     }
+    // 관리자 전체 상품 현황 출력 기능
+    public void showAllProduct() {
+        System.out.println("[ 전체 상품 현황 ]");
+        System.out.println();
+
+        for (Category category : categoryList) {
+            System.out.println("[ " + category.getCategoryName() + " ]");
+
+            for (Product product : category.getCategoryProductList()) {
+                System.out.println(product.getProductDetailInfo());
+            }
+            System.out.println();
+        }
+    }
 }
